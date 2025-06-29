@@ -10,7 +10,7 @@ WS_EX_LAYERED = 0x80000
 
 # Initialize Pygame and load the image
 pygame.init()
-enemy_orig = pygame.image.load("smelldash.png")
+enemy_orig = pygame.image.load("blue_slime.png")
 SMALL_SIZE = (enemy_orig.get_width() // 2, enemy_orig.get_height() // 2)
 enemy_size = enemy_orig.get_width() // 2, enemy_orig.get_height() // 2
 pygame.display.set_caption("Transparent Enemy")
@@ -77,19 +77,19 @@ def shoot_towards(target_x, target_y):
 # --- SLIME TYPES ---
 SLIME_TYPES = {
     "blue": {
-        "img": pygame.transform.smoothscale(pygame.image.load("smelldash.png"), SMALL_SIZE),
+        "img": pygame.transform.smoothscale(pygame.image.load("blue_slime.png"), SMALL_SIZE),
         "pop_value": 1
     },
     "yellow": {
-        "img": pygame.transform.smoothscale(pygame.image.load("smeelldash.png"), SMALL_SIZE),
+        "img": pygame.transform.smoothscale(pygame.image.load("yellow_slime.png"), SMALL_SIZE),
         "pop_value": 12
     },
     "red": {
-        "img": pygame.transform.smoothscale(pygame.image.load("smeeelldash.png"), SMALL_SIZE),
+        "img": pygame.transform.smoothscale(pygame.image.load("red_slime.png"), SMALL_SIZE),
         "pop_value": 50
     },
     "gold": {
-        "img": pygame.transform.smoothscale(pygame.image.load("smeeeelldash.png"), SMALL_SIZE),
+        "img": pygame.transform.smoothscale(pygame.image.load("gold_slime.png"), SMALL_SIZE),
         "pop_value": 100
     }
 }
@@ -370,6 +370,16 @@ while running:
     # draw radiuses around the player
     #pygame.draw.circle(screen, (255, 0, 0), player_pos, 150, 1)
     #pygame.draw.circle(screen, (0, 255, 0), player_pos, 300, 1)
+
+    # POps coutner
+    font = pygame.font.Font(None, 46)
+    textblack = font.render(f"Pops: {pops}", True, (0, 0, 0))
+    textlblue = font.render(f"Pops: {pops}", True, (230, 230, 255))
+    screen.blit(textblack, (10, 10))
+    screen.blit(textblack, (10, 14))
+    screen.blit(textblack, (14, 10))
+    screen.blit(textblack, (14, 14))
+    screen.blit(textlblue, (12, 12))
     pygame.display.update()
     time.sleep(0.02)
 
